@@ -1,0 +1,121 @@
+algorithme : algo_pendu
+// but : faire le jeu du pendu
+// entrée : un mot puis ensuite les lettres a deviner
+// sortie : sortie un bout du pendu à chaque erreur 
+
+VAR
+	mot, base : CHAINE
+	car : CARACTERE
+	ent,i,j,intru,restant, compteur : ENTIER
+
+
+FONCTION Affichage(compteur:ENTIER) : ENTIER
+	DEBUT
+	SI(compteur = 1)
+		ALORS
+			ECRIRE '       '
+			ECRIRE '       '
+			ECRIRE '       '
+			ECRIRE '       '
+			ECRIRE '___    '
+		SINON SI (compteur = 2)
+			ALORS
+				ECRIRE '       '
+				ECRIRE '|      '
+				ECRIRE '|      '
+				ECRIRE '|      '
+				ECRIRE '___    '
+			SINON SI (compteur = 3)
+				ALORS
+					ECRIRE '_______'
+					ECRIRE '|      '
+					ECRIRE '|      '
+					ECRIRE '|      '
+					ECRIRE '___    '
+				SINON SI (compteur = 4)
+					ALORS
+						ECRIRE '_______'
+						ECRIRE '|    | '
+						ECRIRE '|      '
+						ECRIRE '|      '
+						ECRIRE '___    '
+					SINON SI (compteur = 5)
+						ALORS
+							ECRIRE '_______'
+							ECRIRE '|    | '
+							ECRIRE '|    0 '
+							ECRIRE '|      '
+							ECRIRE '___    '
+						SINON SI (compteur = 6)
+							ALORS
+								ECRIRE '_______'
+								ECRIRE '|    | '
+								ECRIRE '|    0 '
+								ECRIRE '|    | '
+								ECRIRE '___    '
+							SINON SI (compteur = 7)
+								ALORS
+									ECRIRE '_______'
+									ECRIRE '|    | '
+									ECRIRE '|    0 '
+									ECRIRE '|   /| '
+									ECRIRE '___    '
+								SINON SI (compteur = 8)
+									ALORS
+										ECRIRE '_______'
+										ECRIRE '|    | '
+										ECRIRE '|    0 '
+										ECRIRE '|   /|\'
+										ECRIRE '___    '
+									SINON SI (compteur = 9)
+										ALORS
+											ECRIRE '_______'
+											ECRIRE '|    | '
+											ECRIRE '|    0 '
+											ECRIRE '|   /|\'
+											ECRIRE '___ /  '
+											SINON SI (compteur = 10)
+												ALORS
+													ECRIRE '_______'
+													ECRIRE '|    | '
+													ECRIRE '|    0 '
+													ECRIRE '|   /|\'
+													ECRIRE '___ / \'
+	FINSI
+FONCTION Question(car: caractere):chaine
+DEBUT
+	REPETER
+	FIN
+		ECRIRE 'Choississez un lettre'
+		LIRE car
+		intru := 0
+		POUR j := 1 to ent
+			SI (car = mot[j])
+				base[j] := car
+				intru := intru + 1
+			FINSI
+		ECRIRE(vase[j]);
+		SI (intru = 0)
+			compteur := compteur + 1
+		FINSI
+		ECRIRE(Affichage(compteur))
+	Jusqu'à (mot= base) ou (compteur =10)
+	si (compteur = 10)
+		ECRIRE 'Vous avez perdu'
+		LIRE mot
+	FINSI
+		compteur := 0
+		ECRIRE 'Saisissez un mot'
+		lire mot
+		ent := Length(mot)
+		restant := ent
+		base := mot
+			pour i := 1 to ent
+				base[i] := '-'
+			FINPOUR
+		ECRIRE base
+		ECRIRE(Question(car))
+		si (compteur < 10)
+			ECRIRE 'vous avez gagné'
+		FINSI
+FIN
